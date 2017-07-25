@@ -1,0 +1,9 @@
+CodeDraw{
+Canvas(400,400);
+CanvasAddFigure(Line(RED,70,50,200,200));
+CanvasAddFigure(Circle(GREEN,70,50,200));
+CanvasAddFigure(Circle(GREEN,70,50,50));
+CanvasAddFigure(Circle(GREEN,70,50,400));
+CanvasBackground(CYAN);
+f
+}

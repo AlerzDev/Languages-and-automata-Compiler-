@@ -1,0 +1,145 @@
+package compiler;
+
+import draw.CodeDraw;
+import java.io.FileReader;
+import java.awt.Color;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+import helpers.ErrorHelper;
+
+parser code {:
+
+    ErrorHelper helper = ErrorHelper.getInstance();
+
+    public void report_error(String message, Object info) {
+        StringBuilder m = new StringBuilder("Error");
+        if (info instanceof java_cup.runtime.Symbol) {
+            java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
+
+            if (s.left >= 0) {
+                m.append(" in line "+(s.left+1));
+                if (s.right >= 0)
+                    m.append(", column "+(s.right+1));
+            }
+        }
+        m.append(" : "+message);
+        String msg = helper.getErrorSyntax();
+        msg += "";
+        msg += m.toString()+"\n";
+        helper.setErrorSyntax(msg);
+    }
+
+    public void report_fatal_error(String message, Object info) {
+        report_error(message, info);
+    }
+
+    protected void report_expected_token_ids() {
+        List<Integer> ids = this.expected_token_ids();
+        LinkedList<String> list = new LinkedList();
+        Iterator var3 = ids.iterator();
+
+        while(var3.hasNext()) {
+            Integer expected = (Integer)var3.next();
+            list.add(this.symbl_name_from_id(expected.intValue()));
+        }
+        String msg = helper.getErrorSyntax();
+        msg = "";
+        msg += "instead expected token classes ar " + list +"\n";
+        helper.setErrorSyntax(msg);
+    }
+
+    public static void main(String[] args){
+            try {
+                parser asin = new parser(
+                        new AnalyzeLexicon( new FileReader(args[0])));
+                Object result = asin.parse().value;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+:};
+
+action code{:
+    private int mWidth = 0;
+    private int mHeight = 0;
+    private int figure  = 0;
+    CodeDraw codeDraw = new CodeDraw();
+:};
+
+/*DECLARATION OF TERMINALS*/
+terminal CodeDraw, Canvas, CanvasAddFigure,  CanvasBackground;
+terminal Line,  Square, Circle;
+terminal keyOpen, keyClose, parentOpen, parentClose, pointComa, coma;
+terminal Integer num;
+terminal RED, BLUE, YELLOW, GREEN, ORANGE, CYAN, PINK;
+
+/*-------------DECLARATION OF NON TERMINALS-------------*/
+nonterminal program, nextLineCode, createCanvas, lineCode, figure;
+nonterminal Integer  n;
+nonterminal Color c;
+
+//Code structure
+program     ::= CodeDraw keyOpen createCanvas nextLineCode keyClose;
+nextLineCode::= lineCode nextLineCode;
+nextLineCode::= lineCode;
+
+//Created canvas
+createCanvas::= Canvas parentOpen n:width coma n:height parentClose pointComa
+{:
+    codeDraw.createCanvas(width, height);
+    codeDraw.setmWidth(width);
+    codeDraw.setmHeight(height);
+:};
+
+//Adding or update attributes to the canvas
+lineCode::= CanvasAddFigure parentOpen figure parentClose pointComa;
+lineCode::= CanvasBackground parentOpen c:color parentClose pointComa
+{:
+    codeDraw.setJFrameBackGround(color);
+:};
+
+//Add Line
+figure::= Line parentOpen c:border coma n:x1 coma n:y1 coma n:x2 coma n:y2 parentClose
+{:
+    figure++;
+    if(codeDraw.validityRangeCanvas(x1,y1)){
+        codeDraw.drawLine(border, x1, y1, x2, y2);
+    }else{
+        codeDraw.setMsgError("CanvasAddFigure==>>"+figure+"<<Your primary coordinate is outside the canvas range (Line)...."+"\n");
+    }
+
+:};
+
+//Add square
+figure::= Square parentOpen c:border coma n:x coma n:y coma n:size parentClose
+{:
+    figure++;
+    if(codeDraw.validityRangeCanvas(x,y)){
+        codeDraw.drawSquare(border, x, y, size);
+    }else{
+        codeDraw.setMsgError("CanvasAddFigure==>>"+figure+"<<Your primary coordinate is outside the canvas range (Square)...."+"\n");
+    }
+:};
+
+//Add circle
+figure::= Circle parentOpen c:border coma n:x coma n:y coma n:radius parentClose
+{:
+    figure++;
+    if(codeDraw.validityRangeCanvas(x,y)){
+        codeDraw.drawCircle(border, x, y, radius);
+    }else{
+        codeDraw.setMsgError("CanvasAddFigure==>>"+figure+"<<Your primary coordinate is outside the canvas range (Circle)...."+"\n");
+    }
+:};
+
+n::= num:m{: RESULT = new Integer(m);:};
+
+c::=   RED    {: RESULT = Color.RED; :}
+     | GREEN  {: RESULT = Color.GREEN; :}
+     | PINK   {: RESULT = Color.PINK; :}
+     | CYAN   {: RESULT = Color.CYAN; :}
+     | ORANGE {: RESULT = Color.ORANGE; :}
+     | BLUE   {: RESULT = Color.BLUE; :}
+     | YELLOW {: RESULT = Color.YELLOW; :};

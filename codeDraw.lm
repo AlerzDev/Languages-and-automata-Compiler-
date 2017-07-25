@@ -1,0 +1,7 @@
+CodeDraw{
+Canvas(400,400);
+CanvasAddFigure(Line(RED,70,50,200,200));
+CanvasAddFigure(Square(RED,200,200,200));
+CanvasAddFigure(Line(RED,70,50,200,200))
+CanvasAddFigure(Square(RED,20,200,200));
+}
