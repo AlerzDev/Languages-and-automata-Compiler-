@@ -113,22 +113,22 @@ figure::= Line parentOpen c:border coma n:x1 coma n:y1 coma n:x2 coma n:y2 paren
 :};
 
 //Add square
-figure::= Square parentOpen c:border coma n:x coma n:y coma n:size parentClose
+figure::= Square parentOpen c:border coma c:solid coma n:x coma n:y coma n:size parentClose
 {:
     figure++;
     if(codeDraw.validityRangeCanvas(x,y)){
-        codeDraw.drawSquare(border, x, y, size);
+        codeDraw.drawSquare(border,solid, x, y, size);
     }else{
         codeDraw.setMsgError("CanvasAddFigure==>>"+figure+"<<Your primary coordinate is outside the canvas range (Square)...."+"\n");
     }
 :};
 
 //Add circle
-figure::= Circle parentOpen c:border coma n:x coma n:y coma n:radius parentClose
+figure::= Circle parentOpen c:border coma c:solid coma n:x coma n:y coma n:radius parentClose
 {:
     figure++;
     if(codeDraw.validityRangeCanvas(x,y)){
-        codeDraw.drawCircle(border, x, y, radius);
+        codeDraw.drawCircle(border, solid, x, y, radius);
     }else{
         codeDraw.setMsgError("CanvasAddFigure==>>"+figure+"<<Your primary coordinate is outside the canvas range (Circle)...."+"\n");
     }

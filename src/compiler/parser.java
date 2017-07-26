@@ -39,8 +39,8 @@ public class parser extends java_cup.runtime.lr_parser {
     unpackFromStrings(new String[] {
     "\000\022\000\002\002\007\000\002\002\004\000\002\003" +
     "\004\000\002\003\003\000\002\004\011\000\002\005\007" +
-    "\000\002\005\007\000\002\006\016\000\002\006\014\000" +
-    "\002\006\014\000\002\007\003\000\002\010\003\000\002" +
+    "\000\002\005\007\000\002\006\016\000\002\006\016\000" +
+    "\002\006\016\000\002\007\003\000\002\010\003\000\002" +
     "\010\003\000\002\010\003\000\002\010\003\000\002\010" +
     "\003\000\002\010\003\000\002\010\003" });
 
@@ -50,9 +50,9 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\103\000\004\004\004\001\002\000\004\013\007\001" +
+    "\000\107\000\004\004\004\001\002\000\004\013\007\001" +
     "\002\000\004\002\006\001\002\000\004\002\000\001\002" +
-    "\000\004\005\010\001\002\000\004\015\100\001\002\000" +
+    "\000\004\005\010\001\002\000\004\015\104\001\002\000" +
     "\006\006\012\007\015\001\002\000\004\015\033\001\002" +
     "\000\004\014\032\001\002\000\010\006\012\007\015\014" +
     "\ufffe\001\002\000\004\015\016\001\002\000\020\022\021" +
@@ -65,7 +65,7 @@ public class parser extends java_cup.runtime.lr_parser {
     "\017\030\001\002\000\010\006\ufffb\007\ufffb\014\ufffb\001" +
     "\002\000\004\014\uffff\001\002\000\004\002\001\001\002" +
     "\000\010\010\037\011\036\012\035\001\002\000\004\016" +
-    "\076\001\002\000\004\015\065\001\002\000\004\015\054" +
+    "\102\001\002\000\004\015\067\001\002\000\004\015\054" +
     "\001\002\000\004\015\040\001\002\000\020\022\021\023" +
     "\022\024\024\025\023\026\020\027\017\030\026\001\002" +
     "\000\004\020\042\001\002\000\004\021\043\001\002\000" +
@@ -75,19 +75,23 @@ public class parser extends java_cup.runtime.lr_parser {
     "\021\043\001\002\000\004\016\053\001\002\000\004\016" +
     "\ufffa\001\002\000\020\022\021\023\022\024\024\025\023" +
     "\026\020\027\017\030\026\001\002\000\004\020\056\001" +
-    "\002\000\004\021\043\001\002\000\004\020\060\001\002" +
-    "\000\004\021\043\001\002\000\004\020\062\001\002\000" +
-    "\004\021\043\001\002\000\004\016\064\001\002\000\004" +
-    "\016\ufff9\001\002\000\020\022\021\023\022\024\024\025" +
-    "\023\026\020\027\017\030\026\001\002\000\004\020\067" +
-    "\001\002\000\004\021\043\001\002\000\004\020\071\001" +
-    "\002\000\004\021\043\001\002\000\004\020\073\001\002" +
-    "\000\004\021\043\001\002\000\004\016\075\001\002\000" +
-    "\004\016\ufff8\001\002\000\004\017\077\001\002\000\010" +
-    "\006\ufffc\007\ufffc\014\ufffc\001\002\000\004\021\043\001" +
-    "\002\000\004\020\102\001\002\000\004\021\043\001\002" +
-    "\000\004\016\104\001\002\000\004\017\105\001\002\000" +
-    "\006\006\ufffd\007\ufffd\001\002" });
+    "\002\000\020\022\021\023\022\024\024\025\023\026\020" +
+    "\027\017\030\026\001\002\000\004\020\060\001\002\000" +
+    "\004\021\043\001\002\000\004\020\062\001\002\000\004" +
+    "\021\043\001\002\000\004\020\064\001\002\000\004\021" +
+    "\043\001\002\000\004\016\066\001\002\000\004\016\ufff9" +
+    "\001\002\000\020\022\021\023\022\024\024\025\023\026" +
+    "\020\027\017\030\026\001\002\000\004\020\071\001\002" +
+    "\000\020\022\021\023\022\024\024\025\023\026\020\027" +
+    "\017\030\026\001\002\000\004\020\073\001\002\000\004" +
+    "\021\043\001\002\000\004\020\075\001\002\000\004\021" +
+    "\043\001\002\000\004\020\077\001\002\000\004\021\043" +
+    "\001\002\000\004\016\101\001\002\000\004\016\ufff8\001" +
+    "\002\000\004\017\103\001\002\000\010\006\ufffc\007\ufffc" +
+    "\014\ufffc\001\002\000\004\021\043\001\002\000\004\020" +
+    "\106\001\002\000\004\021\043\001\002\000\004\016\110" +
+    "\001\002\000\004\017\111\001\002\000\006\006\ufffd\007" +
+    "\ufffd\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -95,7 +99,7 @@ public class parser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\103\000\004\002\004\001\001\000\002\001\001\000" +
+    "\000\107\000\004\002\004\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\004\004\010\001\001" +
     "\000\002\001\001\000\006\003\012\005\013\001\001\000" +
     "\002\001\001\000\002\001\001\000\006\003\030\005\013" +
@@ -110,16 +114,17 @@ public class parser extends java_cup.runtime.lr_parser {
     "\001\001\000\004\007\045\001\001\000\002\001\001\000" +
     "\004\007\047\001\001\000\002\001\001\000\004\007\051" +
     "\001\001\000\002\001\001\000\002\001\001\000\004\010" +
-    "\054\001\001\000\002\001\001\000\004\007\056\001\001" +
+    "\054\001\001\000\002\001\001\000\004\010\056\001\001" +
     "\000\002\001\001\000\004\007\060\001\001\000\002\001" +
-    "\001\000\004\007\062\001\001\000\002\001\001\000\002" +
-    "\001\001\000\004\010\065\001\001\000\002\001\001\000" +
-    "\004\007\067\001\001\000\002\001\001\000\004\007\071" +
+    "\001\000\004\007\062\001\001\000\002\001\001\000\004" +
+    "\007\064\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\010\067\001\001\000\002\001\001\000\004\010\071" +
     "\001\001\000\002\001\001\000\004\007\073\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\004\007\100\001\001\000\002\001\001\000" +
-    "\004\007\102\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001" });
+    "\002\001\001\000\004\007\075\001\001\000\002\001\001" +
+    "\000\004\007\077\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\007\104" +
+    "\001\001\000\002\001\001\000\004\007\106\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -356,12 +361,15 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // figure ::= Square parentOpen c coma n coma n coma n parentClose 
+          case 8: // figure ::= Square parentOpen c coma c coma n coma n coma n parentClose 
             {
               Object RESULT =null;
-		int borderleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
-		int borderright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
-		Color border = (Color)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
+		int borderleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)).left;
+		int borderright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)).right;
+		Color border = (Color)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-9)).value;
+		int solidleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
+		int solidright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
+		Color solid = (Color)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
 		int xleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
 		int xright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
 		Integer x = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
@@ -374,22 +382,25 @@ class CUP$parser$actions {
 		
     figure++;
     if(codeDraw.validityRangeCanvas(x,y)){
-        codeDraw.drawSquare(border, x, y, size);
+        codeDraw.drawSquare(border,solid, x, y, size);
     }else{
         codeDraw.setMsgError("CanvasAddFigure==>>"+figure+"<<Your primary coordinate is outside the canvas range (Square)...."+"\n");
     }
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("figure",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("figure",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-11)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // figure ::= Circle parentOpen c coma n coma n coma n parentClose 
+          case 9: // figure ::= Circle parentOpen c coma c coma n coma n coma n parentClose 
             {
               Object RESULT =null;
-		int borderleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
-		int borderright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
-		Color border = (Color)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
+		int borderleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)).left;
+		int borderright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)).right;
+		Color border = (Color)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-9)).value;
+		int solidleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
+		int solidright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
+		Color solid = (Color)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
 		int xleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
 		int xright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
 		Integer x = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
@@ -402,12 +413,12 @@ class CUP$parser$actions {
 		
     figure++;
     if(codeDraw.validityRangeCanvas(x,y)){
-        codeDraw.drawCircle(border, x, y, radius);
+        codeDraw.drawCircle(border, solid, x, y, radius);
     }else{
         codeDraw.setMsgError("CanvasAddFigure==>>"+figure+"<<Your primary coordinate is outside the canvas range (Circle)...."+"\n");
     }
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("figure",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("figure",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-11)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
